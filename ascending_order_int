@@ -1,0 +1,27 @@
+vector<string> bigSorting(vector<string> unsorted) {
+    vector<long long int> result;
+    for (int i =0; i<unsorted.size(); i++){
+       string temp;
+       temp = unsorted[i];
+       stringstream s(temp);
+       long long int temp_n;
+       s >> temp_n;
+       result.push_back(temp_n);
+    }
+ 
+    for (int i =0; i<unsorted.size(); i++){
+        long long int temp_min =result[i];
+        int temp_minid = i;
+        for(int j = i+1; j< unsorted.size(); j++){
+            if (result[j]<temp_min){
+                temp_minid = j;
+                temp_min = result[j];
+            }            
+
+        }
+
+        result[temp_minid] = result[i];
+        result[i]= temp_min;
+
+    }
+    
